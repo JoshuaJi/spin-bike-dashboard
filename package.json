@@ -33,8 +33,7 @@
   },
   "private": true,
   "scripts": {
-    "test": "gulp",
-    "build": "gulp serve:dist"
+    "test": "gulp"
   },
   "eslintConfig": {
     "extends": "google"
