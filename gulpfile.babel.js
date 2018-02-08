@@ -68,6 +68,16 @@ gulp.task('copy', () =>
     .pipe($.size({title: 'copy'}))
 );
 
+// Copy font files
+gulp.task('fonts', () =>
+  gulp.src([
+    'app/fonts/*'
+  ], {
+    dot: true
+  }).pipe(gulp.dest('dist/fonts'))
+    .pipe($.size({title: 'fonts'}))
+);
+
 // Compile and automatically prefix stylesheets
 gulp.task('styles', () => {
   const AUTOPREFIXER_BROWSERS = [
@@ -110,8 +120,15 @@ gulp.task('scripts', () =>
       // Note: Since we are not using useref in the scripts build pipeline,
       //       you need to explicitly list your scripts here in the right order
       //       to be correctly concatenated
-      './app/scripts/main.js'
-      // Other scripts
+      './app/scripts/jquery-3.3.1.js',
+      './app/scripts/bootstrap.min.js',
+      './app/scripts/material.min.js',
+      './app/scripts/chartist.min.js',
+      './app/scripts/arrive.min.js',
+      './app/scripts/perfect-scrollbar.jquery.min.js',
+      './app/scripts/bootstrap-notify.js',
+      './app/scripts/material-dashboard.js',
+      './app/scripts/demo.js'
     ])
       .pipe($.newer('.tmp/scripts'))
       .pipe($.sourcemaps.init())
@@ -197,7 +214,7 @@ gulp.task('serve:dist', ['default'], () =>
 gulp.task('default', ['clean'], cb =>
   runSequence(
     'styles',
-    ['html', 'scripts', 'images', 'copy'],
+    ['html', 'scripts', 'images', 'copy', 'fonts'],
     'generate-service-worker',
     cb
   )
