@@ -128,7 +128,8 @@ gulp.task('scripts', () =>
       './app/scripts/perfect-scrollbar.jquery.min.js',
       './app/scripts/bootstrap-notify.js',
       './app/scripts/material-dashboard.js',
-      './app/scripts/demo.js'
+      './app/scripts/demo.js',
+      './app/scripts/main.js',
     ])
       .pipe($.newer('.tmp/scripts'))
       .pipe($.sourcemaps.init())
