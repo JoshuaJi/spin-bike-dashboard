@@ -7,7 +7,7 @@ function validate(){
 
 	var xhr = new XMLHttpRequest();
 	//console.log('http://127.0.0.1:5000/auth?username='+username+"&pwd="+password);
- 	xhr.open('GET', 'http://127.0.0.1:5000/auth?username='+username+"&pwd="+password, true);
+ 	xhr.open('GET', 'https://spin-bike-api.herokuapp.com/auth?username='+username+"&pwd="+password, true);
  	xhr.send();
  	xhr.addEventListener("readystatechange", processRequest, false);
  	function processRequest(e) {
