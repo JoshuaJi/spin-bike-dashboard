@@ -248,15 +248,9 @@
                 </div>
                 <div class="card-content">
                   <h4 class="title">Daily Usage</h4>
-                  <select name="Locations">
-                    <option value="brown4">Brown 4</option>
-                    <option value="mcintyre3-1">McIntyre 3rd 1</option>
-                    <option value="mcintyre3-2">McIntyre 3rd 2</option>                    
-                    <option value="redpath1-1">Redpath 1st 1</option>
-                    <option value="redpath1-2">Redpath 1st 2</option>
-                    <option value="trottier5-1">Trottier 5th 1</option>
-                    <option value="trottier5-2">Trottier 5th 2</option>
+                  <select name="Locations", id="all_addresses", onchange=display_data.displayGraphData>
                   </select>
+                  <select name="Bikes", id="all_bikes_at_address"></select>
                   <p class="category">
                     <span class="text-success">
                       <i class="fa fa-long-arrow-up"></i> 55% </span> increase in usage compared to yesterday.</p>
@@ -417,6 +411,9 @@
 
       // Javascript method's body can be found in scripts/demos.js
       demo.initDashboardPageCharts();
+      display.getSelectOptions();
+      display.initBikeOptions();
+      display.initGraphData();
 
     });
   </script>
