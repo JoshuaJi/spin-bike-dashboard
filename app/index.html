@@ -248,9 +248,9 @@
                 </div>
                 <div class="card-content">
                   <h4 class="title">Daily Usage</h4>
-                  <select name="Locations", id="all_addresses", onchange=display_data.displayGraphData>
+                  <select name="Locations", id="all_addresses", onchange=display.selectBikeOption()>
                   </select>
-                  <select name="Bikes", id="all_bikes_at_address"></select>
+                  <select name="Bikes", id="all_bikes_at_address", onselect="display.displayGraphData()", onchange="display.displayGraphData()"></select>
                   <p class="category">
                     <span class="text-success">
                       <i class="fa fa-long-arrow-up"></i> 55% </span> increase in usage compared to yesterday.</p>

@@ -1,3 +1,4 @@
+data = 
 display = {
 // Need to cache the results of the first api call.
     initGraphData: function() {
@@ -26,7 +27,7 @@ display = {
                     tension: 0
                 }),
                 low: 0,
-                high: 20, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
+                high: 25, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
                 chartPadding: {
                     top: 0,
                     right: 0,
@@ -41,35 +42,37 @@ display = {
         })
     },
 
+    //Should have dedicated API request
     displayGraphData: function() {
-        $.get("https://spin-bike-api.herokuapp.com", function(data){
-            
+        var current_bike = $("#all_bikes_at_address option:checked").val()
+        console.log()
+        $.get("https://spin-bike-api.herokuapp.com/usage/" + current_bike, function(data){
+            data = JSON.parse(data)
+
             dataBikeUsageChart = {
                 labels: [],
                 series: [
                     []
                 ],
             };
-            var bike_one_usages = data[0].bikes[0].usage
+
             var durations = 0
             var i = 0;
             while(durations<10){
-                if(bike_one_usages[i].duration!=0){
-                    console.log(bike_one_usages[i].duration)
-                    dataBikeUsageChart.labels.push(bike_one_usages[i].start_time)
-                    dataBikeUsageChart.series[0].push(bike_one_usages[i].duration)
+                if(data[i].duration!=0){
+                    dataBikeUsageChart.labels.push(data[i].start_time)
+                    dataBikeUsageChart.series[0].push(data[i].duration)
                     durations++
                 }
                 i++
-            }
+            } 
     
-            console.log(dataBikeUsageChart)
             optionsDailySalesChart = {
                 lineSmooth: Chartist.Interpolation.cardinal({
                     tension: 0
                 }),
                 low: 0,
-                high: 20, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
+                high: 25, // creative tim: we recommend you to set the high sa the biggest value + something for a better look
                 chartPadding: {
                     top: 0,
                     right: 0,
@@ -89,15 +92,33 @@ display = {
             data.forEach(function(element){
                 $("#all_addresses").append("<option value=" + element.address + ">" + element.address + "</option>")
             })
-            $("#all_addresses").val($("#all_addresses option:first").val());
         })
+        // this.selectBikeOption()
     },
 
+    //Should have dedicated API request
     initBikeOptions: function() {
         $.get("https://spin-bike-api.herokuapp.com", function(data){
             data[0].bikes.forEach(function(element){
                 $("#all_bikes_at_address").append("<option value=" + element.sb_id + ">" + element.sb_id + "</option>")
             })   
         })
+    },
+
+    //Should have dedicated API request
+    selectBikeOption: function() {
+        const address = $("#all_addresses option:checked").text()
+        console.log(address)
+        $.get("https://spin-bike-api.herokuapp.com", function(data){
+            data.forEach(function(element){
+                if(element.address == address){
+                    $("#all_bikes_at_address").empty()
+                    element.bikes.forEach(function(element){
+                        $("#all_bikes_at_address").append("<option value=" + element.sb_id + ">" + element.sb_id + "</option>")
+                    })
+                }
+            })
+        })
+        this.displayGraphData()
     }
 }
