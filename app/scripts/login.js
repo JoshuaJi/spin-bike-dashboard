@@ -12,11 +12,12 @@ function validate(){
  	xhr.addEventListener("readystatechange", processRequest, false);
  	function processRequest(e) {
  	    if (xhr.readyState == 4 && xhr.status == 200) {
-	        var response = JSON.parse(xhr.responseText);
-	        if(response){
-	        	alert("log in successfully");
-	        	// Change path to correct page 
-	        	window.location.href = "http://google.com";
+          var response = JSON.parse(xhr.responseText);
+          console.log(response);
+	        if(response === "yes"){
+	        	document.cookie = "loggedin=true";
+	        	// Change path to correct page
+	        	window.location.href = "/";
  	        }
 	        else{
 	        	alert("Log in unsuccessful");

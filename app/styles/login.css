@@ -60,12 +60,15 @@ form .help {
   font-size: 0.8em;
   color: #777;
 }
+
+form .login-form-buttons{
+  justify-content: center;
+  display: flex;
+}
+
 form button {
   position: relative;
-  margin-top: 30px;
-  margin-bottom: 30px;
-  left: 50%;
-  transform: translate(-50%, 0);
+  margin:30px 10px;
   font-family: inherit;
   color: white;
   background: #51A855;
