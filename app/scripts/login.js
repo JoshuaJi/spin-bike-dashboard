@@ -14,7 +14,7 @@ function validate(){
  	    if (xhr.readyState == 4 && xhr.status == 200) {
           var response = JSON.parse(xhr.responseText);
           console.log(response);
-	        if(response === "yes"){
+	        if(response === true){
 	        	document.cookie = "loggedin=true";
 	        	// Change path to correct page
 	        	window.location.href = "/";
