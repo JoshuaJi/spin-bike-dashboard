@@ -44,8 +44,8 @@ display = {
 
     //Should have dedicated API request
     displayGraphData: function() {
-        var current_bike = $("#all_bikes_at_address option:checked").val()
-        console.log()
+        var current_bike = $("#all_bikes_at_address").val()
+        console.log(current_bike)
         $.get("https://spin-bike-api.herokuapp.com/usage/" + current_bike, function(data){
             data = JSON.parse(data)
 
@@ -93,7 +93,7 @@ display = {
                 $("#all_addresses").append("<option value=" + element.address + ">" + element.address + "</option>")
             })
         })
-        // this.selectBikeOption()
+        this.selectBikeOption()
     },
 
     //Should have dedicated API request
@@ -107,7 +107,7 @@ display = {
 
     //Should have dedicated API request
     selectBikeOption: function() {
-        const address = $("#all_addresses option:checked").text()
+        const address = $("#all_addresses option:selected").text()
         console.log(address)
         $.get("https://spin-bike-api.herokuapp.com", function(data){
             data.forEach(function(element){
