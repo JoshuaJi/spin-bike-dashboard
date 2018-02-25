@@ -8,6 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
   <title>Account Management</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
   <!-- Disable tap highlight on IE -->
   <meta name="msapplication-tap-highlight" content="no">
@@ -186,7 +187,10 @@
                   <p class="category">Caretaker Schedule Management Console</p>
                 </div>
                 <div class="card-content">
-                    LORUM IBSUPMLORUM IBSUPMLORUM IBSUPMLORUM IBSUPMLORUM IBSUPMLORUM IBSUPMLORUM IBSUPMLORUM IBSUPMLORUM IBSUPM
+                    <span>Please select a caretaker</span> 
+                    <select id="caretaker_choice" onchange="scheduleForm.changeCaretaker();"></select>
+                    <div id="caretaker_schedule">
+                    </div>
                 </div>
               </div>
             </div>
@@ -232,6 +236,7 @@
       </div>
     </div>
 
+    <script src='scripts/scheduleform.js'></script>
 
     <!-- build:js scripts/main.min.js -->
     <script src="scripts/main.min.js"></script>
