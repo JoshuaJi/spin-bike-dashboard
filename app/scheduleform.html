@@ -44,6 +44,7 @@
   <!--  CSS for Demo Purpose, don't include it in your project     -->
   <link href="styles/demo.css" rel="stylesheet" />
   <link href="styles/accounts.css" rel="stylesheet" />
+  <link href="styles/scheduleform.css" rel="stylesheet" />
   <!--     Fonts and icons     -->
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
   <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
@@ -190,6 +191,17 @@
                     <span>Please select a caretaker</span> 
                     <select id="caretaker_choice" onchange="scheduleForm.changeCaretaker();"></select>
                     <div id="caretaker_schedule">
+                    </div>
+                    <div>
+                        <button id="remove_shift" type=button class="schedule-button" onclick="scheduleForm.removeShift();"><i class="fa fa-minus"></i> Remove shift</button>
+                    </div>
+                    <div class="add-shift">
+                      <select id="weekdays"></select>
+                      <span> at </span>
+                      <select id="shift_hour"></select>
+                      <span> : </span>
+                      <select id="shift_minute"></select>
+                      <button type=button class="schedule-button" onclick="scheduleForm.addShift();"><i class="fa fa-plus"></i> Add shift</button>
                     </div>
                 </div>
               </div>
