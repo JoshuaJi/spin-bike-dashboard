@@ -60,7 +60,9 @@ function create(){
   var userPasswordB = inputUserPasswordB.value;
   var userRole = selectUserRole.options[selectUserRole.selectedIndex].value;
 
-  var jsonData =  { 'data' :{ 'email': userEmail, 'pwd': userPasswordA, 'bm_name': userName, 'role': userRole }};
+  var jsonData = { 'data': { 'email': userEmail, 'pwd': userPasswordA, 'bm_name': userName, 'role': userRole }};
+  var jsonDataString = JSON.stringify(jsonData);
+  console.log(jsonDataString);
 
   $.ajax({
       type: "PUT",
@@ -68,18 +70,22 @@ function create(){
       headers: {"X-HTTP-Method-Override": "PUT"},
       url: "https://spin-bike-api.herokuapp.com/create",
       contentType: "application/json; charset=utf-8",
-      data: jsonData
-  }).done(function(status){
-      if(status == 404){
-        throw "Problem Connecting to Server"
-      } else if (status = 200){
-        alert("connection");
+      data: jsonDataString,
+      error: function (err) {
+        throw err;
       }
-  });
+  }).done(function (status) {
+    console.log(status);
+    if (status == 200) {
+      alert("connection");
+    } else {
+      throw "Problem Connecting To Server";
+    }
+      });
 }
 function process(){
   try {
-    console.log("process get called")
+    console.log("process get called");
     accounts_validate();
     create();
   } catch(err) {
