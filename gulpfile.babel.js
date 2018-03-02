@@ -192,6 +192,7 @@ gulp.task('serve', ['scripts', 'styles'], () => {
     port: 3000
   });
 
+  
   gulp.watch(['app/**/*.html'], reload);
   gulp.watch(['app/styles/**/*.{scss,css}'], ['styles', reload]);
   gulp.watch(['app/scripts/**/*.js'], ['scripts', reload]);

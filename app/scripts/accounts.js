@@ -60,28 +60,24 @@ function create(){
   var userPasswordB = inputUserPasswordB.value;
   var userRole = selectUserRole.options[selectUserRole.selectedIndex].value;
 
-  var jsonData = { 'data': { 'email': userEmail, 'pwd': userPasswordA, 'bm_name': userName, 'role': userRole }};
+  var jsonData = { email: userEmail, pwd: userPasswordA, bm_name: userName, role: userRole };
   var jsonDataString = JSON.stringify(jsonData);
-  console.log(jsonDataString);
+  var form = new FormData();
+  form.append("data", jsonDataString);
 
-  $.ajax({
-      type: "PUT",
-      dataType: "json",
-      headers: {"X-HTTP-Method-Override": "PUT"},
-      url: "https://spin-bike-api.herokuapp.com/create",
-      contentType: "application/json; charset=utf-8",
-      data: jsonDataString,
-      error: function (err) {
-        throw err;
-      }
-  }).done(function (status) {
-    console.log(status);
-    if (status == 200) {
-      alert("connection");
-    } else {
-      throw "Problem Connecting To Server";
+  var settings = {
+    
+    "url": "https://spin-bike-api.herokuapp.com/create",
+    "method": "PUT",
+    "headers": { "X-HTTP-Method-Override": "PUT" },
+    "data": {
+      data: jsonDataString
     }
-      });
+  }
+
+  $.ajax(settings).done(function (response) {
+    console.log(response);
+  });
 }
 function process(){
   try {
