@@ -176,7 +176,7 @@
           <!--     CheckList form     -->
           <div class="row">
 
-            <div class="col-md-8">
+            <div class="col-md-6">
               <div class="card">
                 <div class="card-header" data-background-color="purple">
 
@@ -186,7 +186,7 @@
 
                 </div>
 				<div class="card-content">
-				
+				<form onSubmit="validate_checklist();return false" method="POST">
                   <h4 class="title">Select Location</h4>
                   <select name="Locations" , id="all_addresses" , onchange=display.selectBikeOption()>
                   </select>
@@ -228,32 +228,8 @@
                           <label class="control-label">Other Comments</label>
                           <input type="text" class="form-control" id="inputComemnts">
                         </div>
-                </div>
-                <div class="card-footer">
-                  <div class="stats">
-
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-
-          <div class="row">
-
-            <div class="col-md-4">
-              <div class="card">
-                <div class="card-header" data-background-color="purple">
-
-                  <i class="material-icons">directions_bike</i>
-                  <h4 class="title">CheckList</h4>
-                  <p class="category">Bikes</p>
-
-                </div>
-				<div class="card-content">
-				
-                  <h4 class="title">Select Bike 1</h4>
-                  <select name="Bike" , id="all_bikes_at_address" , onchange=display.selectBikeOption()>
+                                        <h4 class="title">Select Bike 1</h4>
+                  <select name="Bike" , id="all_bikes_at_address" >
                   </select>
 
                      <table class="table">
@@ -272,7 +248,7 @@
                         </tbody>
                       </table>
                    <h4 class="title">Select Bike 2</h4>
-                  <select name="Bike" , id="all_bikes_at_address" , onchange=display.selectBikeOption()>
+                  <select name="Bike" , id="all_bikes_at_address">
                   </select>
 
                      <table class="table">
@@ -287,15 +263,24 @@
                             </td>
                             <td>Is the  Bike Computer Workings?</td>
                           </tr>
-                          
+
                         </tbody>
                       </table>
+                      <table class="table">
+                        <tbody>
+                          <tr>
+                            <td>
+                            	<button type="submit" class="btn btn-primary pull-right">Submit</button>
+                            </td>
+                          </tr>
+
+                        </tbody>
+                      </table>
+                      
                 </div>
+                </form>
                 <div class="card-footer">
                   <div class="stats">
-
-                    <button type="submit" class="btn pull-right">Submit Form</button>
-                    
 
                   </div>
                 </div>
@@ -354,7 +339,6 @@
     $(document).ready(function () {
 
       // Javascript method's body can be found in scripts/demos.js
-      demo.initDashboardPageCharts();
       display.getSelectOptions();
       display.initBikeOptions();
       display.initGraphData();
