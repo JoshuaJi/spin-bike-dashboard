@@ -13,6 +13,10 @@
       $('.admin').hide();
     }
 
+    $('#logout').click(function(){
+      document.cookie = "loggedin=false";
+      window.location.href = "/";
+    })
 
   });
 })();
