@@ -123,6 +123,7 @@ gulp.task('scripts', () =>
       './node_modules/jquery/dist/jquery.js',
       './app/scripts/bootstrap.min.js',
       './app/scripts/material.min.js',
+      './app/scripts/notification.js',
       './app/scripts/chartist.min.js',
       './app/scripts/arrive.min.js',
       './app/scripts/perfect-scrollbar.jquery.min.js',

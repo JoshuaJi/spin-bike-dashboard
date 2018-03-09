@@ -42,6 +42,7 @@
   <link href="styles/material-dashboard.css?v=1.2.0" rel="stylesheet" />
   <!--  CSS for Demo Purpose, don't include it in your project     -->
   <link href="styles/demo.css" rel="stylesheet" />
+  <link href="styles/checklist.css" rel="stylesheet" />
   <!--     Fonts and icons     -->
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
   <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
@@ -176,109 +177,94 @@
           <!--     CheckList form     -->
           <div class="row">
 
-            <div class="col-md-6">
-              <div class="card">
+            <div class="col-md-8">
+              <div class="card card-nav-tabs">
                 <div class="card-header" data-background-color="purple">
 
-                  <i class="material-icons">directions_bike</i>
-                  <h4 class="title">CheckList</h4>
-                  <p class="category">Location</p>
+                  <span style="display:inline-block">
+                    <h4 class="title">CheckList</h4>
+                    <p class="category">Location</p>
+                  </span>
+                  <ul class="nav nav-tabs pull-right" data-tabs="tabs">
+                    <li class="active">
+                      <a href="#trottier" data-toggle="tab" aria-expanded="true">
+                        <!-- <i class="material-icons">bug_report</i> Bugs -->
+                        Trottier
+                        <div class="ripple-container"></div>
+                      </a>
+                    </li>
+                    <li class="">
+                      <a href="#redpath" data-toggle="tab" aria-expanded="false">
+                        <!-- <i class="material-icons">code</i> Website -->
+                        Redpath
+                        <div class="ripple-container"></div>
+                      </a>
+                    </li>
+                  </ul>
 
                 </div>
-				<div class="card-content">
-				<form onSubmit="validate_checklist();return false" method="POST">
-                  <h4 class="title">Select Location</h4>
-                  <select name="Locations" , id="all_addresses" , onchange=display.selectBikeOption()>
-                  </select>
-                        <table class="table">
-                        <tbody>
-                          <tr>
-                            <td>
-                              <div class="checkbox">
-                                <label>
-                                  <input type="checkbox" name="optionsCheckboxesPlants" checked>
-                                </label>
-                              </div>
-                            </td>
-                            <td>Are the Plants Watered?</td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <div class="checkbox">
-                                <label>
-                                  <input type="checkbox" name="optionsCheckboxesClean">
-                                </label>
-                              </div>
-                            </td>
-                            <td>Is the Place Clean?</td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <div class="checkbox">
-                                <label>
-                                  <input type="checkbox" name="optionsCheckboxesDone">
-                                </label>
-                              </div>
-                            </td>
-                            <td>Done</td>
-                          </tr>
-                        </tbody>
-                      </table>
-                        <div class="form-group label-floating">
-                          <label class="control-label">Other Comments</label>
-                          <input type="text" class="form-control" id="inputComemnts">
-                        </div>
-                                        <h4 class="title">Select Bike 1</h4>
-                  <select name="Bike" , id="all_bikes_at_address" >
-                  </select>
 
-                     <table class="table">
-                        <tbody>
-                          <tr>
-                            <td>
-                              <div class="checkbox">
-                                <label>
-                                  <input type="checkbox" name="optionsCheckboxesBike1" checked>
-                                </label>
-                              </div>
-                            </td>
-                            <td>Is the  Bike Computer Workings?</td>
-                          </tr>
-
-                        </tbody>
-                      </table>
-                   <h4 class="title">Select Bike 2</h4>
-                  <select name="Bike" , id="all_bikes_at_address">
-                  </select>
-
-                     <table class="table">
-                        <tbody>
-                          <tr>
-                            <td>
-                              <div class="checkbox">
-                                <label>
-                                  <input type="checkbox" name="optionsCheckboxesBike2" checked>
-                                </label>
-                              </div>
-                            </td>
-                            <td>Is the  Bike Computer Workings?</td>
-                          </tr>
-
-                        </tbody>
-                      </table>
+                <div class="card-content">
+                  <div class="tab-content">
+                    <div class="tab-pane active" id="trottier">
                       <table class="table">
                         <tbody>
                           <tr>
                             <td>
-                            	<button type="submit" class="btn btn-primary pull-right">Submit</button>
+                                Facilities
+                            </td>
+                            <td class="checklist">
+                              <button class="btn btn-default checklist-item">Plants are watered</button>
+                              <button class="btn btn-default checklist-item">Place is clean</button>
+                              <button class="btn btn-default checklist-item">Done</button>
                             </td>
                           </tr>
-
+                          <tr>
+                            <td>
+                                Bike
+                            </td>
+                            <td class="checklist">
+                                <button class="btn btn-default checklist-item">Bike 1 is functioning</button>
+                              </td>
+                          </tr>
                         </tbody>
                       </table>
-                      
+
+
+
+                    </div>
+                    <div class="tab-pane" id="redpath">
+                        <table class="table">
+                            <tbody>
+                              <tr>
+                                <td>
+                                    Facilities
+                                </td>
+                                <td class="checklist">
+                                  <button class="btn btn-default checklist-item">Plants are watered</button>
+                                  <button class="btn btn-default checklist-item">Place is clean</button>
+                                  <button class="btn btn-default checklist-item">Done</button>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>
+                                    Bikes
+                                </td>
+                                <td class="checklist">
+                                    <button class="btn btn-default checklist-item">Bike 2 is functioning</button>
+                                    <button class="btn btn-default checklist-item">Bike 3 is functioning</button>
+                                  </td>
+                              </tr>
+                            </tbody>
+                          </table>
+
+
+                    </div>
+                    <button class="btn btn-primary pull-right" style="margin-top: 25px" id="submit">
+                        submit
+                      </button>
+                  </div>
                 </div>
-                </form>
                 <div class="card-footer">
                   <div class="stats">
 
@@ -339,9 +325,9 @@
     $(document).ready(function () {
 
       // Javascript method's body can be found in scripts/demos.js
-      display.getSelectOptions();
-      display.initBikeOptions();
-      display.initGraphData();
+      // display.getSelectOptions();
+      // display.initBikeOptions();
+      // display.initGraphData();
 
     });
   </script>
