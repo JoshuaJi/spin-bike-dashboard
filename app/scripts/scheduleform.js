@@ -91,25 +91,22 @@ var scheduleForm = {
       };
 
       var formDataForPut = new FormData();
-      console.log($.param(dataForPut));
-      formDataForPut.append('data', $.param(dataForPut));
+      formDataForPut.append('data', JSON.stringify(dataForPut));
 
-      console.log(formDataForPut);
+      console.log(dataForPut);
       var settings = {
         "async": true,
         "crossDomain": true,
         "url": "https://spin-bike-api.herokuapp.com/update_schedule",
         "method": "PUT",
-        "headers": {
-          "Content-Type": "application/x-www-form-urlencoded",
-          "Cache-Control": "no-cache",
-          "Postman-Token": "2b4c9e29-ecc6-0fab-c87e-908eda660e81"
-        },
+        "headers": { "X-HTTP-Method-Override": "PUT" },
         "processData": false,
         "contentType": false,
         "mimeType": "multipart/form-data",
-        "data": formDataForPut
-      }
+        "data": {
+          'data': formDataForPut
+        }
+      };
 
       $.ajax(settings).done(function (response) {
         console.log(response);
