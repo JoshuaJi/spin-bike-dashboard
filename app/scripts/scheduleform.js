@@ -173,7 +173,7 @@ var scheduleForm = {
       var locationID = locationObject.l_id;
       var dataForPut = {
         "l_id": locationID,
-        "b_id": $('#caretaker_choice').val(),
+        "bm_id": $('#caretaker_choice').val(),
         "days": []
       }
       while (($('#location' + locationID + ' #shift_check_' + shiftNum)).val()) {
@@ -213,12 +213,10 @@ var scheduleForm = {
       };
       if (dataForPut.days.length > 0) {
         $.ajax(settings).done(function (response) {
-          console.log(response);
+          alert("Shift deleted. Full changes will not apply until page is refreshed.");
         });
       }
     });
-    $('#caretaker_schedule').empty();
-    scheduleForm.changeCaretaker();
   }
 };
 
