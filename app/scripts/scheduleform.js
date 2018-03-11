@@ -86,7 +86,7 @@ var scheduleForm = {
       var formattedShiftDate = shiftDate.getFullYear() + "-" + this.formatZeros(shiftDate.getMonth() + 1) + "-" + this.formatZeros(shiftDate.getDate()) + " " + this.formatZeros(shiftDate.getHours()) + ":" + this.formatZeros(shiftDate.getMinutes()) + ":" + this.formatZeros(shiftDate.getSeconds());
       var dataForPut = {
         "l_id": locationID,
-        "days": formattedShiftDate,
+        "days": [formattedShiftDate],
         "bm_id": $('#caretaker_choice').val()
       };
 
@@ -99,17 +99,19 @@ var scheduleForm = {
         "crossDomain": true,
         "url": "https://spin-bike-api.herokuapp.com/update_schedule",
         "method": "PUT",
-        "headers": { "X-HTTP-Method-Override": "PUT" },
+        "headers": {
+          "X-HTTP-Method-Override": "PUT"
+        },
         "processData": false,
         "contentType": false,
         "mimeType": "multipart/form-data",
-        "data": {
-          'data': formDataForPut
-        }
+        "data": formDataForPut
       };
 
       $.ajax(settings).done(function (response) {
-        console.log(response);
+        if (day == 'Sunday' || day == 'Saturday') {
+          alert("Can't schedule on weekends. Shift will not apply.");
+        }
       });
     }
   },
@@ -178,13 +180,42 @@ var scheduleForm = {
         var oneShiftCheck = $('#location' + locationID + ' #shift_check_' + shiftNum);
         var oneShift = $('#location' + locationID + ' #shift_' + shiftNum);
         if (oneShiftCheck.prop('checked')) {
-          dataForPut.days.push(oneShift.html());
+          var shiftDateString = oneShift.html();
+          var day = shiftDateString.substring(0, shiftDateString.indexOf(' '));
+          var shiftDate = new Date(scheduleForm.getNextWeekDay(day));
+          var shiftHour = shiftDateString.substring(shiftDateString.indexOf("at") + 3, shiftDateString.indexOf(":"));
+          var shiftMinute = shiftDateString.substring(shiftDateString.indexOf(":") + 1);
+          shiftDate.setHours(shiftHour);
+          shiftDate.setMinutes(shiftMinute);
+          console.log(shiftDate);
+          var formattedShiftDate = shiftDate.getFullYear() + "-" + scheduleForm.formatZeros(shiftDate.getMonth() + 1) + "-" + scheduleForm.formatZeros(shiftDate.getDate()) + " " + scheduleForm.formatZeros(shiftDate.getHours()) + ":" + scheduleForm.formatZeros(shiftDate.getMinutes()) + ":" + scheduleForm.formatZeros(shiftDate.getSeconds());
+          dataForPut.days.push(formattedShiftDate);
           oneShiftCheck.remove();
           oneShift.remove();
         }
         shiftNum++;
       }
       console.log(dataForPut);
+      var formDataForPut = new FormData();
+      formDataForPut.append('data', JSON.stringify(dataForPut));
+      var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": "https://spin-bike-api.herokuapp.com/delete_schedule",
+        "method": "PUT",
+        "headers": {
+          "X-HTTP-Method-Override": "PUT",
+        },
+        "processData": false,
+        "contentType": false,
+        "mimeType": "multipart/form-data",
+        "data": formDataForPut
+      };
+      if (dataForPut.days.length > 0) {
+        $.ajax(settings).done(function (response) {
+          console.log(response);
+        });
+      }
     });
     $('#caretaker_schedule').empty();
     scheduleForm.changeCaretaker();
