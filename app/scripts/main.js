@@ -9,8 +9,10 @@
     if (match && match[1] === 'true'){
       console.log('logged in');
       $('.admin').show();
+      $('#login-button').hide();
     } else {
       $('.admin').hide();
+      $('#login-button').show();
     }
 
     $('#logout').click(function(){
