@@ -2,3 +2,4 @@ node_modules
 dist/
 .tmp
 SpinBike-5d979af1a9b9.json
+.vs/
