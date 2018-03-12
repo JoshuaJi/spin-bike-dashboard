@@ -91,7 +91,7 @@ function create() {
     //https://spin-bike-api.herokuapp.com/create
     "url": "https://spin-bike-api.herokuapp.com/create",
     "method": "PUT",
-    "asynx" : false,
+    "async" : false,
     "headers": { "X-HTTP-Method-Override": "PUT" },
     "data": {
       data: jsonDataString
