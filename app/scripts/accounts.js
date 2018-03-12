@@ -46,7 +46,7 @@ function accounts_validate() {
 
   var settings = {
 
-    "url": "C:\\Users\\Jerome\\Projects\\spin-bike-api\\account_creation_insert.py",
+    "url": "https://spin-bike-api.herokuapp.com/create",
     "method": "POST",
     "headers": { "X-HTTP-Method-Override": "POST" },
     "data": {
@@ -87,7 +87,7 @@ function create() {
 
   var settings = {
     //https://spin-bike-api.herokuapp.com/create
-    "url": "C:\\Users\\Jerome\\Projects\\spin-bike-api\\account_creation_insert.py",
+    "url": "https://spin-bike-api.herokuapp.com/create",
     "method": "PUT",
     "headers": { "X-HTTP-Method-Override": "PUT" },
     "data": {
