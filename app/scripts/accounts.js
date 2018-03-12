@@ -1,4 +1,4 @@
-function accounts_validate(){
+function accounts_validate() {
   var inputUserName = document.getElementById('inputUserName');
   var inputUserEmail = document.getElementById('inputUserEmail');
   var inputUserPasswordA = document.getElementById('inputUserPasswordA');
@@ -17,37 +17,61 @@ function accounts_validate(){
   var errorMessage = "";
   var hasError = false;
 
-  if(userName == ""){
+  if (userName == "") {
     errorMessage = errorMessage.concat("Name Required!\n");
     inputUserName.style.backgroundColor = "red";
     hasError = true;
   }
 
-  if(userEmail == ""){
+  if (userEmail == "") {
     errorMessage = errorMessage.concat("Email Required!\n");
     inputUserEmail.style.backgroundColor = "red";
     hasError = true;
   }
 
-  if(userPasswordA == ""){
+  if (userPasswordA == "") {
     errorMessage = errorMessage.concat("Password Required!\n");
     inputUserPasswordA.style.backgroundColor = "red";
     hasError = true;
 
-  } else if(userPasswordA != userPasswordB){
+  } else if (userPasswordA != userPasswordB) {
     errorMessage = errorMessage.concat("Passwords must match!\n");
     inputUserPasswordA.style.backgroundColor = "red";
     inputUserPasswordB.style.backgroundColor = "red";
     hasError = true;
   }
 
-  if(hasError){
-      throw errorMessage;
+  var jsonData = { email: userEmail };
+  var jsonDataString = JSON.stringify(jsonData);
+  var form = new FormData();
+  form.append("data", jsonDataString);
+  var settings = {
+    //https://spin-bike-api.herokuapp.com/create
+    "url": "https://spin-bike-api.herokuapp.com/create",
+    "method": "POST",
+    "async" : false,
+    "headers": { "X-HTTP-Method-Override": "POST" },
+    "data": {
+      data: jsonDataString
+    }
+  }
+
+  $.ajax(settings).done(function (response) {
+    console.log(response);
+    if (response == true) {
+      hasError = true;
+      errorMessage = errorMessage.concat("Email already tied to existing user!\n");
+      inputUserEmail.style.backgroundColor = "red";
+    }
+  });
+
+  if (hasError) {
+    throw errorMessage;
   }
 
 }
 
-function create(){
+function create() {
   var inputUserName = document.getElementById('inputUserName');
   var inputUserEmail = document.getElementById('inputUserEmail');
   var inputUserPasswordA = document.getElementById('inputUserPasswordA');
@@ -62,13 +86,12 @@ function create(){
 
   var jsonData = { email: userEmail, pwd: userPasswordA, bm_name: userName, role: userRole };
   var jsonDataString = JSON.stringify(jsonData);
-  var form = new FormData();
-  form.append("data", jsonDataString);
 
   var settings = {
-    
+    //https://spin-bike-api.herokuapp.com/create
     "url": "https://spin-bike-api.herokuapp.com/create",
     "method": "PUT",
+    "async" : false,
     "headers": { "X-HTTP-Method-Override": "PUT" },
     "data": {
       data: jsonDataString
@@ -77,14 +100,17 @@ function create(){
 
   $.ajax(settings).done(function (response) {
     console.log(response);
+    if (response == false) {
+      throw "Error Communicating with server"
+    }
   });
 }
-function process(){
+function process() {
   try {
-    console.log("process get called");
     accounts_validate();
     create();
-  } catch(err) {
+    alert("New Account Created");
+  } catch (err) {
     alert(err);
   }
 }
