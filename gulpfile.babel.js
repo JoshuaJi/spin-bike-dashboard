@@ -135,7 +135,8 @@ gulp.task('scripts', () =>
       './app/scripts/accounts.js',
       './app/scripts/main.js',
       './app/scripts/display_data.js',
-      './app/scripts/scheduleform.js'
+      './app/scripts/scheduleform.js',
+      './app/scripts/display_checklist.js'
     ])
       .pipe($.newer('.tmp/scripts'))
       .pipe($.sourcemaps.init())
@@ -195,7 +196,7 @@ gulp.task('serve', ['scripts', 'styles'], () => {
     port: 3000
   });
 
-  
+
   gulp.watch(['app/**/*.html'], reload);
   gulp.watch(['app/styles/**/*.{scss,css}'], ['styles', reload]);
   gulp.watch(['app/scripts/**/*.js'], ['scripts', reload]);
