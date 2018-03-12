@@ -1,0 +1,13 @@
+.checklist{
+  text-align: center;
+}
+
+.checklist-item{
+  width: 80%;
+}
+
+.checklist-comment{
+  width: 80%;
+  height: 40px;
+  margin: 5px;
+}
