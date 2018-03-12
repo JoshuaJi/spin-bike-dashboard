@@ -8,6 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
   <title>Account Management</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
   <!-- Disable tap highlight on IE -->
   <meta name="msapplication-tap-highlight" content="no">
@@ -43,6 +44,7 @@
   <!--  CSS for Demo Purpose, don't include it in your project     -->
   <link href="styles/demo.css" rel="stylesheet" />
   <link href="styles/accounts.css" rel="stylesheet" />
+  <link href="styles/scheduleform.css" rel="stylesheet" />
   <!--     Fonts and icons     -->
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
   <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
@@ -78,7 +80,7 @@
               <p>Bike Usage Data</p>
             </a>
           </li>
-          <li class="active admin">
+          <li class="admin">
             <a href="accounts.html">
               <i class="material-icons">account_box</i>
               <p>Accounts</p>
@@ -100,6 +102,13 @@
             <a href="./notifications.html">
               <i class="material-icons text-gray">notifications</i>
               <p>Notifications</p>
+            </a>
+          </li>
+
+          <li class="active admin">
+            <a href="scheduleform.html">
+              <i class="material-icons">today</i>
+              <p>Schedule</p>
             </a>
           </li>
         </ul>
@@ -149,16 +158,11 @@
                   </li>
                 </ul>
               </li>
-              <li class="dropdown">
+              <li>
                 <a href="#pablo" class="dropdown-toggle" data-toggle="dropdown">
                   <i class="material-icons">person</i>
                   <p class="hidden-lg hidden-md">Profile</p>
                 </a>
-                <ul class="dropdown-menu">
-                  <li>
-                    <a id="logout">Logout</a>
-                  </li>
-                </ul>
               </li>
             </ul>
             <form class="navbar-form navbar-right" role="search">
@@ -180,57 +184,27 @@
             <div class="col-md-8">
               <div class="card">
                 <div class="card-header" data-background-color="purple">
-                  <h4 class="title">Create Account</h4>
-                  <p class="category">Account Management Console</p>
+                  <h4 class="title">Caretaker Schedule</h4>
+                  <p class="category">Caretaker Schedule Management Console</p>
                 </div>
                 <div class="card-content">
-                  <form onSubmit="process();return false" method="POST">
-                    <div class="row">
-                      <div class="col-md-5">
-                        <div class="form-group label-floating">
-                          <label class="control-label">Username</label>
-                          <input type="text" class="form-control" id="inputUserName">
-                        </div>
-                      </div>
-                      <div class="col-md-7">
-                        <div class="form-group label-floating">
-                          <label class="control-label">Email address</label>
-                          <input type="email" class="form-control" id="inputUserEmail">
-                        </div>
-                      </div>
+                    <span>Please select a caretaker</span> 
+                    <select id="caretaker_choice" onchange="scheduleForm.changeCaretaker();"></select>
+                    <div id="caretaker_schedule">
                     </div>
-
-                    <div class="row">
-                      <div class="col-md-6">
-                        <div class="form-group label-floating">
-                          <label class="control-label">Password</label>
-                          <input class="form-control" id="inputUserPasswordA" type="password">
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-group label-floating">
-                          <label class="control-label">Confirm Password</label>
-                          <input class="form-control" id="inputUserPasswordB" type="password">
-                        </div>
-                      </div>
+                    <div>
+                        <button id="remove_shift" type=button class="schedule-button" onclick="scheduleForm.removeShift();"><i class="fa fa-minus"></i> Remove shift</button>
                     </div>
-
-                    <div class="row">
-                      <div class="col-md-6">
-                        <div class="form-group label-floating">
-
-                          <label class="control-label">User Role</label>
-                          <select id="selectUserRole" class="form-control">
-                            <option value="admin">Admin</option>
-                            <option value="caretaker">Caretaker</option>
-                          </select>
-                        </div>
-                      </div>
+                    <div class="add-shift">
+                      <select id="weekdays"></select>
+                      <span> at </span>
+                      <select id="shift_hour"></select>
+                      <span> : </span>
+                      <select id="shift_minute"></select>
+                      <span> at </span>
+                      <select id="location_select"></select>
+                      <button type=button class="schedule-button" onclick="scheduleForm.addShift();"><i class="fa fa-plus"></i> Add shift</button>
                     </div>
-                    <input type="submit">
-                    <button type="submit" class="btn btn-primary pull-right">Create Account</button>
-                    <div class="clearfix"></div>
-                  </form>
                 </div>
               </div>
             </div>
@@ -276,6 +250,7 @@
       </div>
     </div>
 
+    <script src='scripts/scheduleform.js'></script>
 
     <!-- build:js scripts/main.min.js -->
     <script src="scripts/main.min.js"></script>

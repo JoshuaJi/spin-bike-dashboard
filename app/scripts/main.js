@@ -9,10 +9,22 @@
     if (match && match[1] === 'true'){
       console.log('logged in');
       $('.admin').show();
+      $('#login-button').hide();
     } else {
       $('.admin').hide();
+      $('#login-button').show();
     }
 
+    $('#logout').click(function(){
+
+      const unfinishedChecklist = $('.checklist-item').hasClass('btn-success') || ($('.checklist-comment').val() !== "" && $('.checklist-comment').val() !== undefined);
+      if (unfinishedChecklist){
+        notification.showNotification("top", "right", "danger", "Please submit the checklist before logout");
+        return;
+      }
+      document.cookie = "loggedin=false";
+      window.location.href = "/";
+    })
 
   });
 })();

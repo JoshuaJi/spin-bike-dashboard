@@ -1,3 +1,69 @@
+$(document).ready(function () {
+    // $.get(" https://spin-bike-api.herokuapp.com", function(data){
+    //     data.forEach(function(element){
+    //         var arrItems = [];      // THE ARRAY TO STORE JSON ITEMS.
+    //         $.each(data, function(index, value) {
+    //             arrItems.push(value);   
+    //         })    // PUSH THE VALUES INSIDE THE ARRAY.
+    //     });
+    //         var s = "";
+    //         for(var i = 0; i < arrItems.length; i++) {
+    //                 s = "<tr><td>" + arrItems[i].address + "</td><td>" + arrItems[i].bikes.sb_id + "</td></tr>";
+    //                 $("#showData").append(s);
+    //     }
+    // })
+
+        $.getJSON("https://spin-bike-api.herokuapp.com/bikelogs/asdf&asdf", function(data) {
+
+            var arrItems = [];      // THE ARRAY TO STORE JSON ITEMS.
+            $.each(data, function(index, value) {
+                arrItems.push(value);       // PUSH THE VALUES INSIDE THE ARRAY.
+            });
+
+            // EXTRACT VALUE FOR TABLE HEADER.
+            var col = [];
+            for (var i = 0; i < arrItems.length; i++) {
+                for (var key in arrItems[i]) {
+                    if (col.indexOf(key) === -1) {
+                        col.push(key);
+                    }
+                }
+            }
+
+            // CREATE DYNAMIC TABLE.
+            var table = document.createElement("table");
+
+            // CREATE HTML TABLE HEADER ROW USING THE EXTRACTED HEADERS ABOVE.
+
+            var tr = table.insertRow(-1);                   // TABLE ROW.
+
+            for (var i = 0; i < col.length; i++) {
+                if(i != 1){
+                    var th = document.createElement("th");      // TABLE HEADER.
+                    th.innerHTML = col[i];
+                    tr.appendChild(th);                       
+                }
+             
+            }
+
+            // ADD JSON DATA TO THE TABLE AS ROWS.
+            for (var i = 0; i < arrItems.length; i++) {
+
+                tr = table.insertRow(-1);
+
+                for (var j = 0; j < col.length; j++) {
+                    var tabCell = tr.insertCell(-1);
+                    tabCell.innerHTML = arrItems[i][col[j]];
+                }
+            }
+
+            // FINALLY ADD THE NEWLY CREATED TABLE WITH JSON DATA TO A CONTAINER.
+            var divContainer = document.getElementById("showData");
+            divContainer.innerHTML = "";
+            divContainer.appendChild(table);
+        });
+});
+
 data = 
 display = {
 // Need to cache the results of the first api call.
@@ -85,10 +151,10 @@ display = {
     
             md.startAnimationForLineChart(dailySalesChart);
         })
-    },
+    },          
 
     getSelectOptions: function() {
-        $.get("https://spin-bike-api.herokuapp.com", function(data){
+        $.get(" https://spin-bike-api.herokuapp.com", function(data){
             data.forEach(function(element){
                 $("#all_addresses").append("<option value=" + element.address + ">" + element.address + "</option>")
             })
