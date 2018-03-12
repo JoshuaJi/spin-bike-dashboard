@@ -43,20 +43,24 @@ function accounts_validate() {
 
   var jsonData = { email: userEmail };
   var jsonDataString = JSON.stringify(jsonData);
-
+  var form = new FormData();
+  form.append("data", jsonDataString);
   var settings = {
 
     "url": "https://spin-bike-api.herokuapp.com/create",
-    "method": "POST",
+    "type": "POST",
     "headers": { "X-HTTP-Method-Override": "POST" },
-    "data": {
-      data: jsonDataString
-    }
+    "processData": false,
+    "contentType": false,
+    "cache" : false,
+    "mimeType": "multipart/form-data",
+    "data": form,
+    "dataType" : "boolean"
   }
 
   $.ajax(settings).done(function (response) {
     console.log(response);
-    if (response) {
+    if (data) {
       hasError = true;
       errorMessage = errorMessage.concat("Email already tied to existing user!\n");
       inputUserEmail.style.backgroundColor = "red";
@@ -97,12 +101,16 @@ function create() {
 
   $.ajax(settings).done(function (response) {
     console.log(response);
+    if (response == false) {
+      throw "Error Communicating with server"
+    }
   });
 }
 function process() {
   try {
     accounts_validate();
     create();
+    alert("New Account Created");
   } catch (err) {
     alert(err);
   }
