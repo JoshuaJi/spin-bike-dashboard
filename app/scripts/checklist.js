@@ -9,6 +9,11 @@
       }
     });
 
+    var resetChecklist = function() {
+      $('.checklist-item').removeClass("btn-success").addClass("btn-default")
+      $('.checklist-comment').val("")
+    };
+
     $('#submit').click(function() {
 
       const l_id = $('#trottier').hasClass('active') ? 1 : 2;
@@ -46,6 +51,7 @@
       .done(function (response) {
         console.log(response);
         notification.showNotification("top", "right", "success", "Checklist submited");
+        resetChecklist();
       }).fail(function(xhr, status, error) {
         // error handling
         notification.showNotification("top", "right", "danger", "Submission failure. Please try again later");
