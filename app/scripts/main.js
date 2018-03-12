@@ -16,6 +16,12 @@
     }
 
     $('#logout').click(function(){
+
+      const unfinishedChecklist = $('.checklist-item').hasClass('btn-success') || ($('.checklist-comment').val() !== "" && $('.checklist-comment').val() !== undefined);
+      if (unfinishedChecklist){
+        notification.showNotification("top", "right", "danger", "Please submit the checklist before logout");
+        return;
+      }
       document.cookie = "loggedin=false";
       window.location.href = "/";
     })
