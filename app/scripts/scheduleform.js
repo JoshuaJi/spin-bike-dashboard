@@ -2,7 +2,7 @@ var scheduleForm = {
   weekDays: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
   allSchedules: null,
   initCareTakers: function () {
-    $.get('https://spin-bike-api.herokuapp.com/schedule_all', function (data) {
+    $.get('http://spin-bike-api.herokuapp.com/schedule_all', function (data) {
       $('#caretaker_schedule').hide();
       scheduleForm.allSchedules = data;
       $('#caretaker_choice').append('<option value="none">Please select one caretaker</option>');
@@ -40,7 +40,7 @@ var scheduleForm = {
       var currentCaretakerSchedule = scheduleForm.allSchedules[currentCaretaker];
       currentCaretakerSchedule.forEach(function (element) {
         var i = 0;
-        $.get("https://spin-bike-api.herokuapp.com/location/" + element.l_id, function (data) {
+        $.get("http://spin-bike-api.herokuapp.com/location/" + element.l_id, function (data) {
           $('#caretaker_schedule').append('<div id="location' + element.l_id + '"><span><b>' + data.address + '</b></span><br/>');
           element.schedule.forEach(function (scheduleItem) {
             var check = '<input id="shift_check_' + i + '" type="checkbox">';
@@ -123,16 +123,16 @@ var scheduleForm = {
       alert('Please choose an existing caretaker!');
     } else {
       $.get({
-        url: 'https://spin-bike-api.herokuapp.com',
+        url: 'http://spin-bike-api.herokuapp.com',
         success: this.successData,
         async: false
       });
     }
   },
   initLocationSelect: function () {
-    $.get("https://spin-bike-api.herokuapp.com", function (data) {
+    $.get("http://spin-bike-api.herokuapp.com", function (data) {
       data.forEach(function (locationObject) {
-        $.get('https://spin-bike-api.herokuapp.com/location/' + locationObject.l_id, function (location) {
+        $.get('http://spin-bike-api.herokuapp.com/location/' + locationObject.l_id, function (location) {
           var shortenedAddress = location.address.substring(0, location.address.indexOf(','));
           $('#location_select').append('<option value=' + locationObject.l_id + '>' + shortenedAddress + '</option>');
         });
