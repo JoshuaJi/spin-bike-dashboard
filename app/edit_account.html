@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+  <title>Account Management</title>
+
+  <!-- Disable tap highlight on IE -->
+  <meta name="msapplication-tap-highlight" content="no">
+
+  <!-- Web Application Manifest -->
+  <link rel="manifest" href="manifest.json">
+
+  <!-- Add to homescreen for Chrome on Android -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="application-name" content="Web Starter Kit">
+  <link rel="icon" sizes="192x192" href="images/touch/chrome-touch-icon-192x192.png">
+
+  <!-- Add to homescreen for Safari on iOS -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Web Starter Kit">
+  <link rel="apple-touch-icon" href="images/touch/apple-touch-icon.png">
+
+  <!-- Tile icon for Win8 (144x144 + tile color) -->
+  <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
+  <meta name="msapplication-TileColor" content="#2F3BA2">
+
+  <!-- Color the status bar on mobile devices -->
+  <meta name="theme-color" content="#2F3BA2">
+
+
+  <link rel="apple-touch-icon" sizes="76x76" href="images/apple-icon.png" />
+  <link rel="icon" type="image/png" href="images/favicon.png" />
+  <!-- Bootstrap core CSS     -->
+  <link href="styles/bootstrap.min.css" rel="stylesheet" />
+  <!--  Material Dashboard CSS    -->
+  <link href="styles/material-dashboard.css?v=1.2.0" rel="stylesheet" />
+  <!--  CSS for Demo Purpose, don't include it in your project     -->
+  <link href="styles/demo.css" rel="stylesheet" />
+  <link href="styles/accounts.css" rel="stylesheet" />
+  <!--     Fonts and icons     -->
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
+
+
+  <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
+  <!--
+    <link rel="canonical" href="http://www.example.com/">
+    -->
+</head>
+
+<body>
+  <!-- Add your site or app content here -->
+
+
+  <div class="wrapper">
+    <div class="sidebar" data-color="purple" data-image="images/sidebar-1.jpg">
+      <!--
+      Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
+
+      Tip 2: you can also add an image using data-image tag
+  -->
+      <div class="logo">
+        <a href="http://www.creative-tim.com" class="simple-text">
+          Spin Bike Dashboard
+        </a>
+      </div>
+      <div class="sidebar-wrapper">
+        <ul class="nav">
+          <li>
+            <a href="/">
+              <i class="material-icons">directions_bike</i>
+              <p>Bike Usage Data</p>
+            </a>
+          </li>
+          <li class="active admin">
+            <a href="accounts.html">
+              <i class="material-icons">account_box</i>
+              <p>Accounts</p>
+            </a>
+          </li>
+          <li class="admin">
+            <a href="checklist.html">
+              <i class="material-icons">check</i>
+              <p>Checklist</p>
+            </a>
+          </li>
+          <li class="admin">
+            <a href="map.html">
+              <i class="material-icons">location_on</i>
+              <p>Maps</p>
+            </a>
+          </li>
+          <li>
+            <a href="./notifications.html">
+              <i class="material-icons text-gray">notifications</i>
+              <p>Notifications</p>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="main-panel">
+      <nav class="navbar navbar-transparent navbar-absolute">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#"> Accounts </a>
+          </div>
+          <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right admin">
+              <li>
+                <a href="#pablo" class="dropdown-toggle" data-toggle="dropdown">
+                  <i class="material-icons">dashboard</i>
+                  <p class="hidden-lg hidden-md">Dashboard</p>
+                </a>
+              </li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <i class="material-icons">notifications</i>
+                  <span class="notification">5</span>
+                  <p class="hidden-lg hidden-md">Notifications</p>
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a href="#">Mike John responded to your email</a>
+                  </li>
+                  <li>
+                    <a href="#">You have 5 new tasks</a>
+                  </li>
+                  <li>
+                    <a href="#">You're now friend with Andrew</a>
+                  </li>
+                  <li>
+                    <a href="#">Another Notification</a>
+                  </li>
+                  <li>
+                    <a href="#">Another One</a>
+                  </li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a href="#pablo" class="dropdown-toggle" data-toggle="dropdown">
+                  <i class="material-icons">person</i>
+                  <p class="hidden-lg hidden-md">Profile</p>
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a id="logout">Logout</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+            <form class="navbar-form navbar-right" role="search">
+              <div class="form-group  is-empty">
+                <input type="text" class="form-control" placeholder="Search">
+                <span class="material-input"></span>
+              </div>
+              <button type="submit" class="btn btn-white btn-round btn-just-icon">
+                <i class="material-icons">search</i>
+                <div class="ripple-container"></div>
+              </button>
+            </form>
+          </div>
+        </div>
+      </nav>
+      <div class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-8">
+              <div class="card">
+                <div class="card-header" data-background-color="purple">
+                  <h4 class="title">Edit Account Details</h4>
+                  <p class="category">Account Management Console</p>
+                </div>
+                <div class="card-content">
+                  <form onSubmit="process();return false" method="POST">
+                    <div class="row">
+                      <div class="col-md-5">
+                        <div class="form-group label-floating">
+                          <label class="control-label">Username</label>
+                          <input type="text" class="form-control" id="inputUserName">
+                        </div>
+                      </div>
+                      <div class="col-md-7">
+                        <div class="form-group label-floating">
+                          <label class="control-label">Email address</label>
+                          <input type="email" class="form-control" id="inputUserEmail">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group label-floating">
+                          <label class="control-label">Password</label>
+                          <input class="form-control" id="inputUserPasswordA" type="password">
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group label-floating">
+                          <label class="control-label">Confirm Password</label>
+                          <input class="form-control" id="inputUserPasswordB" type="password">
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group label-floating">
+
+                          <label class="control-label">User Role</label>
+                          <select id="selectUserRole" class="form-control">
+                            <option value="admin">Admin</option>
+                            <option value="caretaker">Caretaker</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <input type="submit">
+                    <button type="submit" class="btn btn-primary pull-right">Create Account</button>
+                    <div class="clearfix"></div>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+        <footer class="footer">
+          <div class="container-fluid">
+            <nav class="pull-left">
+              <ul>
+                <li>
+                  <a href="#">
+                    Home
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    Company
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    Portfolio
+                  </a>
+                </li>
+                <li>
+                  <a href="#">
+                    Blog
+                  </a>
+                </li>
+              </ul>
+            </nav>
+            <p class="copyright pull-right">
+              &copy;
+              <script>
+                document.write(new Date().getFullYear())
+              </script>
+              <a href="/">Spin Bike Dashboard</a>, made with love for a better dashboard
+            </p>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+
+    <!-- build:js scripts/main.min.js -->
+    <script src="scripts/main.min.js"></script>
+    <!-- endbuild -->
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+    <script>
+        (function (i, s, o, g, r, a, m) {
+          i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+          }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+      ga('create', 'UA-XXXXX-X', 'auto');
+      ga('send', 'pageview');
+    </script>
+    <!-- Built with love using Web Starter Kit -->
+</body>
+
+</html>
