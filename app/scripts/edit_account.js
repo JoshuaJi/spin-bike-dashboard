@@ -80,37 +80,36 @@ edit_account =
       var inputUserPasswordA = document.getElementById('inputUserPasswordA');
       var inputUserPasswordB = document.getElementById('inputUserPasswordB');
 
-      //Make request to api for selected user's account info
-      var settings = {
-        //https://spin-bike-api.herokuapp.com/edit_account
-        "url": "https://spin-bike-api.herokuapp.com/edit",
-        "method": "POST",
-        "async": false,
-        "headers": { "X-HTTP-Method-Override": "POST" },
-        "data": {
-          data: jsonDataString
-        }
-      }
-
-      $.ajax(settings).done(function (response) {
-        console.log(response);
-        if (response == true) {
-          hasError = true;
-          errorMessage = errorMessage.concat("Email already tied to existing user!\n");
-          inputUserEmail.style.backgroundColor = "red";
-        }
-      });
-
+      var selectAccount = document.getElementById("selectAccount");
+      var bm_id = selectAccount.value;
 
       var userName = "";
       var userEmail = "";
-      var userPasswordA = "";
-      var userPasswordB = "";
+      var userPassword = "";
+      //Make request to api for selected user's account info
+      var settings = {
+        //https://spin-bike-api.herokuapp.com/edit_account
+        "url": "http://127.0.0.1:5000/edit/" + bm_id,
+        "method": "GET",
+        "async": false,
+        "headers": { "X-HTTP-Method-Override": "GET" },
+        "datatype": "json" 
+      }
 
-      inputUserName.innerText = userName;
-      inputUserEmail.innerText = userEmail;
-      inputUserPasswordA.innerText = userPasswordA;
-      inputUserPasswordB.innerText = userPasswordB;
+      $.ajax(settings).done(function (response) {
+        user = JSON.parse(response);
+        userName = user.bm_name;
+        userEmail = user.email;
+        userPassword = user.pwd;
+      });
+
+
+      
+
+      inputUserName.value = userName;
+      inputUserEmail.value = userEmail;
+      inputUserPasswordA.value = userPassword;
+      inputUserPasswordB.value = userPassword;
     },
 
     // Need to still fix this up
@@ -118,7 +117,7 @@ edit_account =
       var selectAccount = document.getElementById("selectAccount");
       var options = []
       var settings = {
-        //https://spin-bike-api.herokuapp.com/edit_account
+        //https://spin-bike-api.herokuapp.com/edit
         "url": "http://127.0.0.1:5000/edit",
         "method": "GET",
         "async": false,
@@ -128,10 +127,12 @@ edit_account =
 
       $.ajax(settings).done(function (response) {
         for (var i = 0; i < response.length; i++) {
-          var opt = response[i];
+          var jsonUser = JSON.parse(response[i]);
+          var bm_name = jsonUser.bm_name;
+          var bm_id = jsonUser.bm_id;
           var el = document.createElement("option");
-          el.textContent = opt;
-          el.value = opt;
+          el.value = bm_id;
+          el.textContent = bm_name;
           selectAccount.appendChild(el);
         }
       });
