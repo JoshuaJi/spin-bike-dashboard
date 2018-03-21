@@ -182,7 +182,7 @@
 
                 <div class="card-header" data-background-color="purple">
                   <h4 class="title">Edit Account Details</h4>
-                  <select id="selectAccount" class="form-control"></select>
+                  <select id="selectAccount" class="form-control" onchange="edit_account.updateFields();return false"></select>
                 </div>
                 <div class="card-content">
                   <form onSubmit="process();return false" method="POST">
