@@ -40,28 +40,40 @@ function accounts_validate() {
     inputUserPasswordB.style.backgroundColor = "red";
     hasError = true;
   }
-
-  var jsonData = { email: userEmail };
-  var jsonDataString = JSON.stringify(jsonData);
-  var form = new FormData();
-  form.append("data", jsonDataString);
-  var settings = {
-    //https://spin-bike-api.herokuapp.com/create
-    "url": "https://spin-bike-api.herokuapp.com/create",
-    "method": "POST",
+  
+  var emailRequest = {
+    //https://spin-bike-api.herokuapp.com/users/check_email/ +userEmail
+    "url": "https://spin-bike-api.herokuapp.com/users/check_email/" +userEmail,
+    "method": "GET",
     "async" : false,
-    "headers": { "X-HTTP-Method-Override": "POST" },
-    "data": {
-      data: jsonDataString
-    }
+    "headers": { "X-HTTP-Method-Override": "GET" },
+    "data": "boolean"
   }
 
-  $.ajax(settings).done(function (response) {
+  $.ajax(emailRequest).done(function (response) {
     console.log(response);
     if (response == true) {
       hasError = true;
       errorMessage = errorMessage.concat("Email already tied to existing user!\n");
       inputUserEmail.style.backgroundColor = "red";
+    }
+  });
+
+  var usernameRequest= {
+    //https://spin-bike-api.herokuapp.com/users/check_name/ +userName
+    "url": "https://spin-bike-api.herokuapp.com/users/check_name/ " + userName,
+    "method": "GET",
+    "async": false,
+    "headers": { "X-HTTP-Method-Override": "GET" },
+    "data": "boolean"
+  }
+
+  $.ajax(usernameRequest).done(function (response) {
+    console.log(response);
+    if (response == true) {
+      hasError = true;
+      errorMessage = errorMessage.concat("UserName already tied to existing user!\n");
+      inputUserName.style.backgroundColor = "red";
     }
   });
 
@@ -88,8 +100,8 @@ function create() {
   var jsonDataString = JSON.stringify(jsonData);
 
   var settings = {
-    //https://spin-bike-api.herokuapp.com/create
-    "url": "https://spin-bike-api.herokuapp.com/create",
+    //https://spin-bike-api.herokuapp.com/users/create_users
+    "url": "https://spin-bike-api.herokuapp.com/users/create_users",
     "method": "PUT",
     "async" : false,
     "headers": { "X-HTTP-Method-Override": "PUT" },
