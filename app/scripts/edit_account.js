@@ -1,5 +1,15 @@
 edit_account =
   {
+    submit: function () {
+      try {
+        this.validate();
+        this.edit();
+        alert("Account Details Updated.")
+      } catch (err) {
+        alert(err);
+      }
+    
+    },
     validate: function() {
       var inputUserName = document.getElementById('inputUserName');
       var inputUserEmail = document.getElementById('inputUserEmail');
@@ -10,6 +20,9 @@ edit_account =
       var userEmail = inputUserEmail.value;
       var userPasswordA = inputUserPasswordA.value;
       var userPasswordB = inputUserPasswordB.value;
+
+      var selectAccount = document.getElementById("selectAccount");
+      var bm_id = selectAccount.value;
 
       inputUserName.style.backgroundColor = "white";
       inputUserEmail.style.backgroundColor = "white";
@@ -42,23 +55,16 @@ edit_account =
         inputUserPasswordB.style.backgroundColor = "red";
         hasError = true;
       }
-      /* This requires editing. We want to accept the same email as before
-      var jsonData = { email: userEmail };
-      var jsonDataString = JSON.stringify(jsonData);
-      var form = new FormData();
-      form.append("data", jsonDataString);
-      var settings = {
-        //https://spin-bike-api.herokuapp.com/create
-        "url": "https://spin-bike-api.herokuapp.com/create",
-        "method": "POST",
+      var emailRequest = {
+        //"https://spin-bike-api.herokuapp.com/users/check_email/" +userEmail + "&"+ bm_id
+        "url": "https://spin-bike-api.herokuapp.com/users/check_email/" + userEmail +"&" + bm_id,
+        "method": "GET",
         "async": false,
-        "headers": { "X-HTTP-Method-Override": "POST" },
-        "data": {
-          data: jsonDataString
-        }
+        "headers": { "X-HTTP-Method-Override": "GET" },
+        "data": "boolean"
       }
 
-      $.ajax(settings).done(function (response) {
+      $.ajax(emailRequest).done(function (response) {
         console.log(response);
         if (response == true) {
           hasError = true;
@@ -67,12 +73,67 @@ edit_account =
         }
       });
 
-    */
+      var usernameRequest = {
+        //https://spin-bike-api.herokuapp.com/users/check_name/ +userName +"&" + bm_id,
+        "url": "https://spin-bike-api.herokuapp.com/users/check_name/" + userName + "&" + bm_id,
+        "method": "GET",
+        "async": false,
+        "headers": { "X-HTTP-Method-Override": "GET" },
+        "data": "boolean"
+      }
+
+      $.ajax(usernameRequest).done(function (response) {
+        console.log(response);
+        if (response == true) {
+          hasError = true;
+          errorMessage = errorMessage.concat("UserName already tied to existing user!\n");
+          inputUserName.style.backgroundColor = "red";
+        }
+      });
       if (hasError) {
         throw errorMessage;
       }
 
     },
+    edit: function () {
+      var inputUserName = document.getElementById('inputUserName');
+      var inputUserEmail = document.getElementById('inputUserEmail');
+      var inputUserPasswordA = document.getElementById('inputUserPasswordA');
+      var inputUserPasswordB = document.getElementById('inputUserPasswordB');
+      var selectUserRole = document.getElementById('selectUserRole');
+
+      var userName = inputUserName.value;
+      var userEmail = inputUserEmail.value;
+      var userPasswordA = inputUserPasswordA.value;
+      var userPasswordB = inputUserPasswordB.value;
+      var userRole = selectUserRole.options[selectUserRole.selectedIndex].value;
+
+      var selectAccount = document.getElementById("selectAccount");
+      var bm_id = selectAccount.value;
+
+      var jsonData = { bm_id: bm_id, email: userEmail, pwd: userPasswordA, bm_name: userName, role: userRole };
+      var jsonDataString = JSON.stringify(jsonData);
+
+      var settings = {
+        //https://spin-bike-api.herokuapp.com/users/edit_user
+        "url": "https://spin-bike-api.herokuapp.com/users/edit_user",
+        "method": "PUT",
+        "async": false,
+        "headers": {
+          "X-HTTP-Method-Override": "PUT",
+        },
+        "data": {
+          data: jsonDataString
+        }
+      }
+
+      $.ajax(settings).done(function (response) {
+        console.log(response);
+        if (response == false) {
+          throw "Error Communicating with server"
+        }
+      });
+  },
 
     updateFields: function () {
       var inputUserName = document.getElementById('inputUserName');
@@ -88,8 +149,8 @@ edit_account =
       var userPassword = "";
       //Make request to api for selected user's account info
       var settings = {
-        //https://spin-bike-api.herokuapp.com/edit_account
-        "url": "http://127.0.0.1:5000/edit/" + bm_id,
+        //https://spin-bike-api.herokuapp.com/users/get_user/ + bm_id
+        "url": "https://spin-bike-api.herokuapp.com/users/get_user/" + bm_id,
         "method": "GET",
         "async": false,
         "headers": { "X-HTTP-Method-Override": "GET" },
@@ -102,23 +163,19 @@ edit_account =
         userEmail = user.email;
         userPassword = user.pwd;
       });
-
-
-      
-
+    
       inputUserName.value = userName;
       inputUserEmail.value = userEmail;
       inputUserPasswordA.value = userPassword;
       inputUserPasswordB.value = userPassword;
     },
-
-    // Need to still fix this up
+    
     fillList: function () {
       var selectAccount = document.getElementById("selectAccount");
       var options = []
       var settings = {
-        //https://spin-bike-api.herokuapp.com/edit
-        "url": "http://127.0.0.1:5000/edit",
+        //https://spin-bike-api.herokuapp.com/users/get_usernames_and_ids
+        "url": "https://spin-bike-api.herokuapp.com/users/get_usernames_and_ids",
         "method": "GET",
         "async": false,
         "headers": { "X-HTTP-Method-Override": "GET" },
