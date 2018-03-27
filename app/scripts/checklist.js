@@ -17,7 +17,12 @@
     $('#submit').click(function() {
 
       const l_id = $('#trottier').hasClass('active') ? 1 : 2;
-      const bm_id = 1;
+      match = document.cookie.match(new RegExp('bmid' + '=([^;]+)'));
+      var bm_id = 1;
+      if (match) {
+        bm_id = match[1];
+        console.log("match: "+match[1]);
+      }
       const building_prefix = l_id===1 ? "tro" : "red";
       const water = $("#checklist-"+building_prefix+"-plants").hasClass("btn-success")?1:0;
       const clean = $("#checklist-"+building_prefix+"-clean").hasClass("btn-success")?1:0;

@@ -23,6 +23,7 @@
         return;
       }
       document.cookie = "loggedin=false";
+      document.cookie = "bmid=";
       window.location.href = "/";
     })
 
