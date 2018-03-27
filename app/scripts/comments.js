@@ -4,6 +4,7 @@ function readURL(input) {
       
       reader.onload = function (e) {
           $('#image').attr('src', e.target.result);
+          console.log(e.target.result);
       }
       
       reader.readAsDataURL(input.files[0]);
@@ -13,3 +14,37 @@ function readURL(input) {
 $("#imgInp").change(function(){
   readURL(this);
 });
+
+comments = {
+
+  submitPhoto: function() {
+    var url = $("#image").attr('src');
+    console.log(url);
+
+
+    var formDataForPut = new FormData();
+    formDataForPut.append('image', url);
+
+
+
+    var settings = {
+      "async": true,
+      "crossDomain": true,
+      "url": "https://spin-bike-api.herokuapp.com/upload_image",
+      "method": "POST",
+      "headers": {
+        "Cache-Control": "no-cache"
+      },
+      "processData": false,
+      "contentType": false,
+      "mimeType": "multipart/form-data",
+      "data": formDataForPut
+    };
+
+    $.ajax(settings).done(function (response) {
+      console.log(response);
+    });
+
+  }
+
+};
