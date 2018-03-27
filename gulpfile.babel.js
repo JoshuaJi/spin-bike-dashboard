@@ -130,6 +130,7 @@ gulp.task('scripts', () =>
       './app/scripts/bootstrap-notify.js',
       './app/scripts/material-dashboard.js',
       './app/scripts/demo.js',
+      './app/scripts/edit_account.js',
       './app/scripts/login.js',
       './app/scripts/checklist.js',
       './app/scripts/accounts.js',
