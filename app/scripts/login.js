@@ -14,13 +14,14 @@ function validate(){
  	    if (xhr.readyState == 4 && xhr.status == 200) {
           var response = JSON.parse(xhr.responseText);
           console.log(response);
-	        if(response === true){
-	        	document.cookie = "loggedin=true";
-	        	// Change path to correct page
-	        	window.location.href = "/";
+	        if(response === false){
+            alert("Log in unsuccessful");
  	        }
 	        else{
-	        	alert("Log in unsuccessful");
+            document.cookie = "loggedin=true";
+            document.cookie = "bmid="+response;
+	        	// Change path to correct page
+	        	window.location.href = "/";
 			}
  		}
 	}
