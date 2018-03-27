@@ -61,67 +61,57 @@
   <div class="wrapper">
     <div class="sidebar" data-color="purple" data-image="images/sidebar-1.jpg">
       <!--
-      Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
+        Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
 
-      Tip 2: you can also add an image using data-image tag
-  -->
+        Tip 2: you can also add an image using data-image tag
+    -->
       <div class="logo">
-        <a href="index.html" class="simple-text">
-          Spin Bike Checklist
+        <a href="/" class="simple-text">
+          Spin Bike Dashboard
         </a>
       </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
-          <li >
+          <li name="LIBikeUsageData">
             <a href="/">
               <i class="material-icons">directions_bike</i>
               <p>Bike Usage Data</p>
             </a>
           </li>
-          <li class="admin">
+          <li name="LIAccounts" class="admin">
             <a href="accounts.html">
               <i class="material-icons">account_box</i>
               <p>Accounts</p>
             </a>
           </li>
-
-          <li class="admin">
+          <li name="LIChecklist" class="active admin">
             <a href="checklist.html">
               <i class="material-icons">check</i>
               <p>Checklist</p>
             </a>
           </li>
-
-          <li class="admin active">
-            <a href="displayChecklist.html">
-              <i class="material-icons">check</i>
-              <p>Display Checklists</p>
-            </a>
-          </li>
-
-          <li class="admin">
+          <li name="LIMap" class="admin">
             <a href="map.html">
-
               <i class="material-icons">location_on</i>
               <p>Maps</p>
             </a>
           </li>
-          <li>
+          <li name="LINotifications">
             <a href="./notifications.html">
               <i class="material-icons text-gray">notifications</i>
               <p>Notifications</p>
             </a>
           </li>
-
-          <li class="admin">
-            <a href="scheduleform.html">
-              <i class="material-icons">today</i>
-              <p>Schedule</p>
+          <li name="LIEditAccount" class="admin">
+            <a href="edit_account.html">
+              <i class="material-icons">edit_account</i>
+              <p>Edit Account</p>
             </a>
           </li>
         </ul>
       </div>
     </div>
+
     <div class="main-panel">
       <nav class="navbar navbar-transparent navbar-absolute">
         <div class="container-fluid">
@@ -209,36 +199,35 @@
                 <div class="card-content">
 
                   <h4 class="title">Caretakes</h4>
-                  <select name="Locations" , id="all_managers" , onchange=selectManagers()>
-                  </select>
+                  <select name="Locations" , id="all_managers" , onchange=selectManagers()></select>
 
 
 
-                    <button class="btn btn-primary pull-right" style="margin-top: 25px" id="showChecklist">
-                        Show
-                      </button>
+                  <button class="btn btn-primary pull-right" style="margin-top: 25px" id="showChecklist">
+                    Show
+                  </button>
 
-                      <div class="card">
-                        <div class="card-header" data-background-color="orange">
-                            <h4 class="title">Checklists</h4>
-                        </div>
-                        <div class="card-content table-responsive">
-                            <table class="table table-hover">
-                                <thead class="text-warning">
-                                    <tr><th>m_id</th>
-                                    <th>bm_id</th>
-                                    <th>l_id</th>
-                                    <th>plants_watered</th>
-                                    <th>clean</th>
-                                    <th>comments</th>
-                                    <th>done</th>
-                                </tr></thead>
-                                <tbody id="checklist_table_body">
-
-                                </tbody>
-                            </table>
-                        </div>
+                  <div class="card">
+                    <div class="card-header" data-background-color="orange">
+                      <h4 class="title">Checklists</h4>
                     </div>
+                    <div class="card-content table-responsive">
+                      <table class="table table-hover">
+                        <thead class="text-warning">
+                          <tr>
+                            <th>m_id</th>
+                            <th>bm_id</th>
+                            <th>l_id</th>
+                            <th>plants_watered</th>
+                            <th>clean</th>
+                            <th>comments</th>
+                            <th>done</th>
+                          </tr>
+                        </thead>
+                        <tbody id="checklist_table_body"></tbody>
+                      </table>
+                    </div>
+                  </div>
                 </div>
                 <div class="card-footer">
                   <div class="stats">

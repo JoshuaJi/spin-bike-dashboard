@@ -66,45 +66,52 @@
         Tip 2: you can also add an image using data-image tag
     -->
       <div class="logo">
-        <a href="http://www.creative-tim.com" class="simple-text">
+        <a href="/" class="simple-text">
           Spin Bike Dashboard
         </a>
       </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
-          <li>
+          <li name="LIBikeUsageData">
             <a href="/">
               <i class="material-icons">directions_bike</i>
               <p>Bike Usage Data</p>
             </a>
           </li>
-          <li class="active admin">
+          <li name="LIAccounts" class="admin">
             <a href="accounts.html">
               <i class="material-icons">account_box</i>
               <p>Accounts</p>
             </a>
           </li>
-          <li class="admin">
+          <li name="LIChecklist" class="admin">
             <a href="checklist.html">
               <i class="material-icons">check</i>
               <p>Checklist</p>
             </a>
           </li>
-          <li class="admin">
+          <li name="LIMap" class="admin">
             <a href="map.html">
               <i class="material-icons">location_on</i>
               <p>Maps</p>
             </a>
           </li>
-          <li>
+          <li name="LINotifications">
             <a href="./notifications.html">
               <i class="material-icons text-gray">notifications</i>
               <p>Notifications</p>
             </a>
           </li>
+          <li name="LIEditAccount" class="active admin">
+            <a href="edit_account.html">
+              <i class="material-icons">edit_account</i>
+              <p>Edit Account</p>
+            </a>
+          </li>
         </ul>
       </div>
     </div>
+
     <div class="main-panel">
       <nav class="navbar navbar-transparent navbar-absolute">
         <div class="container-fluid">
@@ -283,7 +290,9 @@
     <!-- endbuild -->
     <script type="text/javascript">
       $(document).ready(function () {
-
+        $(function () {
+          $("#LIEditAccount").addClass('active');
+        });
         // Javascript method's body can be found in scripts/edit_account.js
         edit_account.fillList();
 
