@@ -168,6 +168,11 @@ edit_account =
       inputUserEmail.value = userEmail;
       inputUserPasswordA.value = userPassword;
       inputUserPasswordB.value = userPassword;
+
+      inputUserName.classList.remove("is-empty");
+      inputUserEmail.classList.remove("is-empty");
+      inputUserPasswordA.classList.remove("is-empty");
+      inputUserPasswordB.classList.remove("is-empty");
     },
     
     fillList: function () {
