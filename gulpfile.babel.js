@@ -138,6 +138,7 @@ gulp.task('scripts', () =>
       './app/scripts/display_data.js',
       './app/scripts/scheduleform.js',
       './app/scripts/display_checklist.js',
+      './app/scripts/comments.js',
       './app/scripts/download.js'
     ])
       .pipe($.newer('.tmp/scripts'))
