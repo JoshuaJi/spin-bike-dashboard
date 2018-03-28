@@ -61,18 +61,18 @@
   <div class="wrapper">
     <div class="sidebar" data-color="purple" data-image="images/sidebar-1.jpg">
       <!--
-      Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
+        Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
 
-      Tip 2: you can also add an image using data-image tag
-  -->
+        Tip 2: you can also add an image using data-image tag
+    -->
       <div class="logo">
-        <a href="index.html" class="simple-text">
-          Spin Bike Checklist
+        <a href="/" class="simple-text">
+          Spin Bike Dashboard
         </a>
       </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
-          <li class="admin">
+          <li>
             <a href="/">
               <i class="material-icons">directions_bike</i>
               <p>Bike Usage Data</p>
@@ -85,7 +85,7 @@
             </a>
           </li>
 
-          <li class="active admin">
+          <li class="admin active">
             <a href="checklist.html">
               <i class="material-icons">check</i>
               <p>Checklist</p>
@@ -93,21 +93,30 @@
           </li>
 
           <li class="admin">
-            <a href="map.html">
+            <a href="displayChecklist.html">
+              <i class="material-icons">check</i>
+              <p>Display Checklists</p>
+            </a>
+          </li>
 
-              <i class="material-icons">location_on</i>
-              <p>Maps</p>
+          <li class="admin">
+            <a href="scheduleform.html">
+              <i class="material-icons">today</i>
+              <p>Schedule</p>
             </a>
           </li>
-          <li>
-            <a href="./index.html">
-              <i class="material-icons text-gray">notifications</i>
-              <p>Notifications</p>
+
+          <li class="admin">
+            <a href="download.html">
+              <i class="material-icons">file_download</i>
+              <p>Download Data</p>
             </a>
           </li>
+
         </ul>
       </div>
     </div>
+
     <div class="main-panel">
       <nav class="navbar navbar-transparent navbar-absolute">
         <div class="container-fluid">
@@ -216,7 +225,7 @@
                         <tbody>
                           <tr>
                             <td>
-                                Facilities
+                              Facilities
                             </td>
                             <td class="checklist">
                               <button class="btn btn-default checklist-item" id="checklist-tro-plants">Plants are watered</button>
@@ -227,11 +236,11 @@
                           </tr>
                           <tr>
                             <td>
-                                Bike
+                              Bike
                             </td>
                             <td class="checklist">
-                                <button class="btn btn-default checklist-item" id="checklist-tro-bike-1">Bike 1 is functioning</button>
-                              </td>
+                              <button class="btn btn-default checklist-item" id="checklist-tro-bike-1">Bike 1 is functioning</button>
+                            </td>
                           </tr>
                         </tbody>
                       </table>
@@ -240,36 +249,36 @@
 
                     </div>
                     <div class="tab-pane" id="redpath">
-                        <table class="table">
-                            <tbody>
-                              <tr>
-                                <td>
-                                    Facilities
-                                </td>
-                                <td class="checklist">
-                                  <button class="btn btn-default checklist-item" id="checklist-red-plants">Plants are watered</button>
-                                  <button class="btn btn-default checklist-item" id="checklist-red-clean">Place is clean</button>
-                                  <button class="btn btn-default checklist-item" id="checklist-red-done">Done</button>
-                                  <input type="text" placeholder="Comment" name="comment" id="checklist-red-comment" class="checklist-comment">
-                                </td>
-                              </tr>
-                              <tr>
-                                <td>
-                                    Bikes
-                                </td>
-                                <td class="checklist">
-                                    <button class="btn btn-default checklist-item" id="checklist-red-bike-2">Bike 2 is functioning</button>
-                                    <button class="btn btn-default checklist-item"id="checklist-red-bike-3">Bike 3 is functioning</button>
-                                  </td>
-                              </tr>
-                            </tbody>
-                          </table>
+                      <table class="table">
+                        <tbody>
+                          <tr>
+                            <td>
+                              Facilities
+                            </td>
+                            <td class="checklist">
+                              <button class="btn btn-default checklist-item" id="checklist-red-plants">Plants are watered</button>
+                              <button class="btn btn-default checklist-item" id="checklist-red-clean">Place is clean</button>
+                              <button class="btn btn-default checklist-item" id="checklist-red-done">Done</button>
+                              <input type="text" placeholder="Comment" name="comment" id="checklist-red-comment" class="checklist-comment">
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              Bikes
+                            </td>
+                            <td class="checklist">
+                              <button class="btn btn-default checklist-item" id="checklist-red-bike-2">Bike 2 is functioning</button>
+                              <button class="btn btn-default checklist-item" id="checklist-red-bike-3">Bike 3 is functioning</button>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
 
 
                     </div>
                     <button class="btn btn-primary pull-right" style="margin-top: 25px" id="submit">
-                        submit
-                      </button>
+                      submit
+                    </button>
                   </div>
                 </div>
                 <div class="card-footer">

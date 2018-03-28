@@ -130,6 +130,7 @@ gulp.task('scripts', () =>
       './app/scripts/bootstrap-notify.js',
       './app/scripts/material-dashboard.js',
       './app/scripts/demo.js',
+      './app/scripts/edit_account.js',
       './app/scripts/login.js',
       './app/scripts/checklist.js',
       './app/scripts/accounts.js',
@@ -137,7 +138,8 @@ gulp.task('scripts', () =>
       './app/scripts/display_data.js',
       './app/scripts/scheduleform.js',
       './app/scripts/display_checklist.js',
-      './app/scripts/comments.js'
+      './app/scripts/comments.js',
+      './app/scripts/download.js'
     ])
       .pipe($.newer('.tmp/scripts'))
       .pipe($.sourcemaps.init())
