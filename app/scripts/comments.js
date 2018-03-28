@@ -17,6 +17,12 @@ $("#imgInp").change(function(){
 
 comments = {
 
+  loadPhotos: function() {
+    $.get('https://spin-bike-api.herokuapp.com/get_all_images', function(data) {
+      console.log(data);
+    });
+  },
+
   submitPhoto: function() {
     var url = $("#image").attr('src');
     console.log(url);
@@ -31,7 +37,7 @@ comments = {
       "async": true,
       "crossDomain": true,
       "url": "https://spin-bike-api.herokuapp.com/upload_image",
-      "method": "POST",
+      "method": "PUT",
       "headers": {
         "Cache-Control": "no-cache"
       },
@@ -48,3 +54,5 @@ comments = {
   }
 
 };
+
+comments.loadPhotos();
