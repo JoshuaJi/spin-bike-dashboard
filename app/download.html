@@ -181,57 +181,12 @@
             <div class="col-md-8">
               <div class="card">
                 <div class="card-header" data-background-color="purple">
-                  <h4 class="title">Create Account</h4>
-                  <p class="category">Account Management Console</p>
+                  <h4 class="title">Download Data</h4>
+                  <p class="category">Please select a location</p>
                 </div>
                 <div class="card-content">
-                  <form onSubmit="process();return false" method="POST">
-                    <div class="row">
-                      <div class="col-md-5">
-                        <div class="form-group label-floating">
-                          <label class="control-label">Username</label>
-                          <input type="text" class="form-control" id="inputUserName">
-                        </div>
-                      </div>
-                      <div class="col-md-7">
-                        <div class="form-group label-floating">
-                          <label class="control-label">Email address</label>
-                          <input type="email" class="form-control" id="inputUserEmail">
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="row">
-                      <div class="col-md-6">
-                        <div class="form-group label-floating">
-                          <label class="control-label">Password</label>
-                          <input class="form-control" id="inputUserPasswordA" type="password">
-                        </div>
-                      </div>
-                      <div class="col-md-6">
-                        <div class="form-group label-floating">
-                          <label class="control-label">Confirm Password</label>
-                          <input class="form-control" id="inputUserPasswordB" type="password">
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="row">
-                      <div class="col-md-6">
-                        <div class="form-group label-floating">
-
-                          <label class="control-label">User Role</label>
-                          <select id="selectUserRole" class="form-control">
-                            <option value="admin">Admin</option>
-                            <option value="caretaker">Caretaker</option>
-                          </select>
-                        </div>
-                      </div>
-                    </div>
-                    <input type="submit">
-                    <button type="submit" class="btn btn-primary pull-right">Create Account</button>
-                    <div class="clearfix"></div>
-                  </form>
+                  <select name="Locations" , id="all_addresses" , onchange=display.selectBikeOption()></select>
+                  <select name="Bikes" , id="all_bikes_at_address" ></select>
                 </div>
               </div>
             </div>
@@ -281,6 +236,18 @@
     <!-- build:js scripts/main.min.js -->
     <script src="scripts/main.min.js"></script>
     <!-- endbuild -->
+
+    <script type="text/javascript">
+      $(document).ready(function () {
+
+        // Javascript method's body can be found in scripts/demos.js
+        demo.initDashboardPageCharts();
+        display.getSelectOptions();
+        display.initBikeOptions();
+        display.initGraphData();
+
+      });
+    </script>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
     <script>
