@@ -78,14 +78,15 @@ display = {
             };
             var bike_one_usages = data[0].bikes[0].usage
             var durations = 0
-            var i = 0;
+            console.log(bike_one_usages.length)
+            var i = bike_one_usages.length -1;
             while(durations<10){
                 if(bike_one_usages[i].duration!=0){
-                    dataBikeUsageChart.labels.push(bike_one_usages[i].start_time)
-                    dataBikeUsageChart.series[0].push(bike_one_usages[i].duration)
+                    dataBikeUsageChart.labels.unshift(bike_one_usages[i].start_time)
+                    dataBikeUsageChart.series[0].unshift(bike_one_usages[i].duration)
                     durations++
                 }
-                i++
+                i--
             }
     
             optionsDailySalesChart = {
@@ -123,14 +124,14 @@ display = {
             };
 
             var durations = 0
-            var i = 0;
+            var i = data.length-1;
             while(durations<10){
                 if(data[i].duration!=0){
-                    dataBikeUsageChart.labels.push(data[i].start_time)
-                    dataBikeUsageChart.series[0].push(data[i].duration)
+                    dataBikeUsageChart.labels.unshift(data[i].start_time)
+                    dataBikeUsageChart.series[0].unshift(data[i].duration)
                     durations++
                 }
-                i++
+                i--
             } 
     
             optionsDailySalesChart = {
