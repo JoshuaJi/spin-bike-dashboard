@@ -60,10 +60,10 @@
   <div class="wrapper">
     <div class="sidebar" data-color="purple" data-image="images/sidebar-1.jpg">
       <!--
-      Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
+        Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
 
-      Tip 2: you can also add an image using data-image tag
-  -->
+        Tip 2: you can also add an image using data-image tag
+    -->
       <div class="logo">
         <a href="/" class="simple-text">
           Spin Bike Dashboard
@@ -71,61 +71,54 @@
       </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
-          <li class="active">
+          <li name="LIBikeUsageData">
             <a href="/">
               <i class="material-icons">directions_bike</i>
               <p>Bike Usage Data</p>
             </a>
           </li>
-          <li class="admin">
+          <li name="LIAccounts" class="admin">
             <a href="accounts.html">
               <i class="material-icons">account_box</i>
               <p>Accounts</p>
             </a>
           </li>
-
-          <li class="admin">
+          <li name="LIChecklist" class="admin">
             <a href="checklist.html">
               <i class="material-icons">check</i>
               <p>Checklist</p>
             </a>
           </li>
-
-          <li class="admin">
-            <a href="displayChecklist.html">
-              <i class="material-icons">check</i>
-              <p>Display Checklists</p>
-            </a>
-          </li>
-
-          <li class="admin">
+          <li name="LIMap" class="admin">
             <a href="map.html">
-
               <i class="material-icons">location_on</i>
               <p>Maps</p>
             </a>
           </li>
-          <li>
+          <li name="LINotifications">
             <a href="./notifications.html">
               <i class="material-icons text-gray">notifications</i>
               <p>Notifications</p>
             </a>
           </li>
-
-          <li class="admin">
+          <li name="LIEditAccount" class="admin">
+            <a href="edit_account.html">
+              <i class="material-icons">edit_account</i>
+              <p>Edit Account</p>
+            </a>
+          </li>
+          <li name="LIScheduleForm" class="admin">
             <a href="scheduleform.html">
               <i class="material-icons">today</i>
               <p>Schedule</p>
             </a>
           </li>
-
-          <li class="admin">
+          <li name="LIComments" class="admin">
             <a href="comments.html">
               <i class="material-icons">camera_enhance</i>
               <p>Comments</p>
             </a>
           </li>
-
         </ul>
       </div>
     </div>
@@ -217,7 +210,8 @@
                 </div>
                 <div class="card-content">
                   <p class="category">Number of Bikes</p>
-                  <h3 class="title">7
+                  <h3 class="title">
+                    7
 
                     <small>Bikes</small>
 
@@ -240,7 +234,8 @@
                 </div>
                 <div class="card-content">
                   <p class="category">Locations</p>
-                  <h3 class="title">4
+                  <h3 class="title">
+                    4
 
                     <small>Buildings</small>
 
@@ -261,7 +256,8 @@
                 </div>
                 <div class="card-content">
                   <p class="category">Total Calories Burned</p>
-                  <h3 class="title">67090
+                  <h3 class="title">
+                    67090
                     <small>cal</small>
                   </h3>
                 </div>
@@ -281,12 +277,13 @@
                 </div>
                 <div class="card-content">
                   <h4 class="title">Daily Usage</h4>
-                  <select name="Locations" , id="all_addresses" , onchange=display.selectBikeOption()>
-                  </select>
+                  <select name="Locations" , id="all_addresses" , onchange=display.selectBikeOption()></select>
                   <select name="Bikes" , id="all_bikes_at_address" , onchange="display.displayGraphData()"></select>
                   <p class="category">
                     <span class="text-success">
-                      <i class="fa fa-long-arrow-up"></i> 55% </span> increase in usage compared to yesterday.</p>
+                      <i class="fa fa-long-arrow-up"></i> 55%
+                    </span> increase in usage compared to yesterday.
+                  </p>
                 </div>
                 <div class="card-footer">
                   <div class="stats">
@@ -407,7 +404,8 @@
                                 </label>
                               </div>
                             </td>
-                            <td>Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept
+                            <td>
+                              Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept
                               through metro Detroit
                             </td>
                             <td class="td-actions text-right">
@@ -451,7 +449,8 @@
                                 </label>
                               </div>
                             </td>
-                            <td>Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept
+                            <td>
+                              Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept
                               through metro Detroit
                             </td>
                             <td class="td-actions text-right">
@@ -513,7 +512,8 @@
                                 </label>
                               </div>
                             </td>
-                            <td>Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept
+                            <td>
+                              Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept
                               through metro Detroit
                             </td>
                             <td class="td-actions text-right">
@@ -557,7 +557,7 @@
                   <p class="category">Comparing usage data</p>
                 </div>
                 <div class="card-content table-responsive">
-                    <div class="table table-hover" id="showData"></div>
+                  <div class="table table-hover" id="showData"></div>
                 </div>
               </div>
             </div>
