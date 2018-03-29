@@ -65,22 +65,14 @@
       var settings = {
         async: true,
         crossDomain: true,
-        url: "https://spin-bike-api.herokuapp.com/",
+        url: "https://spin-bike-api.herokuapp.com/usage/"+current_bike,
         method: "GET"
       };
 
       $.ajax(settings)
         .done(function(response) {
-          var usage = [];
-          for (var index in response) {
-            if (parseInt(response[index].bikes[0].sb_id) === parseInt(current_bike)) {
-              usage = response[index].bikes[0].usage;
-              console.log(response[index].bikes[0].usage);
-              break;
-            }
-          }
+          var usage = JSON.parse(response);
 
-          console.log(usage);
           var headers = {
             sb_id: "Spin Bike id".replace(/,/g, ""), // remove commas to avoid errors
             start_time: "Start Time".replace(/,/g, ""),
